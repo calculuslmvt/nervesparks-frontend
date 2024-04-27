@@ -12,16 +12,18 @@
         rows: 4,
         placeholder: "Enter Car-Json Data",
     };  
-    
+
     let carData = "";
     let status = ""
     const handleClick = async ()=> {
         try {
-            const carJsonData = JSON.parse(carData);
+        status = ""; 
+        const carJsonData = JSON.parse(carData);
         const url = serverUrl + "/admin/add-cars";
         const response = await axios.post(url, carJsonData);
         // @ts-ignore
         status = response.data.message; 
+        carData = "";
         console.log(response);
         } catch (error) {
             // @ts-ignore
