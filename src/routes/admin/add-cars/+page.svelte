@@ -14,16 +14,19 @@
     };  
 
     let carData = "";
-    let status = ""
+    let status = "";
+    let submit = "Submit"; 
     const handleClick = async ()=> {
         try {
-        status = ""; 
+        status = "";
+        submit = "Creating.... wait";  
         const carJsonData = JSON.parse(carData);
         const url = serverUrl + "/admin/add-cars";
         const response = await axios.post(url, carJsonData);
         // @ts-ignore
         status = response.data.message; 
         carData = "";
+        submit = "Add more"
         console.log(response);
         } catch (error) {
             // @ts-ignore
@@ -60,7 +63,7 @@
                 <button 
                 on:click={handleClick}
                 class="flex p-1 bg-slate-600 rounded-md">
-                    Submit 
+                    {submit} 
                 </button>
             </div>
             <div class="py-3 text-sm text-green-400">
