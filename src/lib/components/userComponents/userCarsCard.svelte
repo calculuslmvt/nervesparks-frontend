@@ -66,7 +66,7 @@
 {#if propValue && (filterValue === "" || propValue?.name === filterValue)}
   <Card padding="none">
     {filterValue}
-    <div class="grid grid-cols-3 max-w-none w-[75rem]">
+    <div class="grid grid-cols-3 max-w-none w-[73rem]">
         <div class="col-span-1">
         <a href="/">
             <img class=" max-w-[23rem] p-8 rounded-t-lg" src={carImage} alt="product 1" />
