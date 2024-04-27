@@ -32,7 +32,7 @@
         isLoading = false; 
         console.log("response"); 
         console.log(dealData);
-    })
+    }); 
 
     // @ts-ignore
     const handleClick = async(deal)=> {
