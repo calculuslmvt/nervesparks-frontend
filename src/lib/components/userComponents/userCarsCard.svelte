@@ -6,6 +6,7 @@
     import { serverUrl } from '$lib/constants';
     // @ts-ignore
     import { BugSolid } from 'flowbite-svelte-icons';
+    import { searchValue } from '../stores';
 
     export let propValue ; 
     const carImage = propValue?.car_info?.car_image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3A6p6Odp1heDj1YSNFaeYtdwBvh3bwVYgXTNsdMNXTA&s";
@@ -54,9 +55,17 @@
             isPurchasePrcessing = false;  
         }
     }
+
+    let filterValue = "";
+    searchValue.subscribe((value)=>{
+        filterValue = value;
+        console.log("value: :" ,  filterValue); 
+    })
 </script>
-  
+
+{#if propValue && (filterValue === "" || propValue?.name === filterValue)}
   <Card padding="none">
+    {filterValue}
     <div class="grid grid-cols-3 max-w-none w-[75rem]">
         <div class="col-span-1">
         <a href="/">
@@ -115,3 +124,5 @@
     </div>
       
   </Card>
+  
+  {/if}

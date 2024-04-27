@@ -18,6 +18,7 @@
     let isLoading = true ; 
     let userData; 
     let myDeals: any[] = []; 
+    let dealerName = ""; 
     onMount(async() => {
         try {
             isLoading = true; 
@@ -25,10 +26,9 @@
             const response = await axios.post(url, {withCredentials: true}); 
             userData = response.data?.data;
             myDeals = userData?.deals || [];  
-
+            dealerName = userData.dealership_name;
             console.log("response");
             console.log(myDeals); 
-
             isLoading = false; 
         } catch(error:any) {
             console.log(error.message); 
@@ -45,7 +45,7 @@
     {/if}
     {#each myDeals as deal }
         <div class="w-full">
-           <UserMyCarsCard propValue = {deal}/> 
+           <UserMyCarsCard propValue = {deal} name = {dealerName}/> 
         </div>
     {/each} 
 </div>

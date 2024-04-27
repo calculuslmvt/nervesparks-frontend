@@ -2,12 +2,14 @@
   import { Tabs, TabItem } from 'flowbite-svelte';
   import UserAllCars from './userAllCars.svelte';
   import MyCars from './myCars.svelte';
+  import SearchBar from './searchBar.svelte';
 </script>
 
 <Tabs>
   <TabItem open title="All Cars">
     <p class="text-sm text-gray-500 dark:text-gray-400 ">
       <b>Cars:</b>
+      <SearchBar/>
       <UserAllCars/>
     </p>
   </TabItem>

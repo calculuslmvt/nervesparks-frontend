@@ -6,7 +6,8 @@
     import { serverUrl } from '$lib/constants';
     // @ts-ignore
 
-    export let propValue: any ; 
+    export let propValue: any ;
+    export let name: any;  
     let carImage : any; 
     /**
      * @type {any[]}
@@ -23,16 +24,16 @@
             "dealId": propValue
         }, {withCredentials: true}); 
         console.log(response); 
-        propValue = response.data?.data;   
+        propValue = response.data?.data ;  
     };
 
     let carId = propValue?._id || "";
     onMount(async() => {
 
         await handleSoldVehicle();
-        carImage = propValue?.car_info?.car_image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3A6p6Odp1heDj1YSNFaeYtdwBvh3bwVYgXTNsdMNXTA&s";
-
+        
         if(propValue) {
+          carImage = propValue?.car_info?.car_image || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3A6p6Odp1heDj1YSNFaeYtdwBvh3bwVYgXTNsdMNXTA&s";
           carId = await propValue?._id; 
           console.log(carId); 
           const url = serverUrl + '/dealership/get-deals-car';
@@ -41,7 +42,8 @@
           }, {withCredentials: true});
           console.log("response");
           dealData = response.data?.data || [];
-        }
+        } 
+        else return; 
         
         isLoading = false; 
         console.log("response"); 
@@ -69,6 +71,7 @@
     }
 </script>
   
+{#if propValue}
   <Card padding="none">
     <div class="grid grid-cols-3 max-w-none w-[75rem]">
         <div class="col-span-1">
@@ -101,6 +104,7 @@
                       </div>
                       <div class="">
                           
+                        {#if name === deal.deal_info?.name}
                             {#if deal.deal_info?.isDealValid}
                               <Button 
                               bind:value = {remove}
@@ -108,13 +112,13 @@
                                 Change : {remove}
                                 </Button> 
                             {:else}
-                            <div class="text-red-600">
-                                <Button on:click={() => handleClick(deal)}>
-                                    SoldOut: {remove}
-                                </Button> 
-                            </div>
+                              <div class="text-red-600">
+                                  <Button on:click={() => handleClick(deal)}>
+                                      SoldOut: {remove}
+                                  </Button> 
+                              </div>
                             {/if}
-                        
+                          {/if}
                       </div>
                   </div>
               </div>
@@ -131,5 +135,6 @@
               {/if}
             </div>   
     </div>
-      
+    
   </Card>
+{/if}

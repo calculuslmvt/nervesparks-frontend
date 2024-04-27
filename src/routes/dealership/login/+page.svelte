@@ -48,7 +48,7 @@
     
     <div class="flex flex-col relative justify-center items-center h-screen">
         <div class="text-slate-100 text-xl p-3">
-            Dealership User
+            Dealership
         </div>
         <Sidebar {activeUrl}>
             <SidebarWrapper>

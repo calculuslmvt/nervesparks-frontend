@@ -4,6 +4,7 @@
     import { Card, Button, Rating, Badge } from 'flowbite-svelte';
     import { onMount } from 'svelte';
     import { serverUrl } from '$lib/constants';
+    import { searchValue } from '../stores';
     // @ts-ignore
 
     export let propValue: any ; 
@@ -63,8 +64,13 @@
             isPurchasePrcessing = false;  
         }
     }
+
+
+
 </script>
-  
+
+
+    
   <Card padding="none">
     <div class="grid grid-cols-3 max-w-none w-[75rem]">
         <div class="col-span-1">
@@ -73,7 +79,7 @@
           </a>
           <div class="px-5 pb-5 w-full">
             <a href="/">
-              <h5 class="text-xl font-semibold tracking-tight text-gray-900 w-full dark:text-white">{propValue.name}</h5>
+              <h5 class="text-xl font-semibold tracking-tight text-gray-900 w-full dark:text-white">{propValue?.name}</h5>
             </a>
             
           </div>

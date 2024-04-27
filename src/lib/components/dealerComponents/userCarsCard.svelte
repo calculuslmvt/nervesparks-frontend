@@ -58,7 +58,7 @@
           </a>
           <div class="px-5 pb-5 w-full">
             <a href="/">
-              <h5 class="text-xl font-semibold tracking-tight text-gray-900 w-full dark:text-white">{propValue.name}</h5>
+              <h5 class="text-xl font-semibold tracking-tight text-gray-900 w-full dark:text-white">{propValue?.name}</h5>
             </a>
             
           </div>

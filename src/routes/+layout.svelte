@@ -2,8 +2,6 @@
 import "../app.pcss";
 import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte';
 
-
-
 </script>
 
 <div class=" backdrop-blur-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 text-white/80 z-50 flex flex-row relative ">
